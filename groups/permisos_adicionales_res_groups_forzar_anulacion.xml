@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+    <record model="res.groups" id="forzar_cancelacion_factura">
+      <field name="category_id" ref="base.module_category_usability" />
+      <field name="name">Forzar cancelación de facturas</field>
+    </record>
+  </data>
+</odoo>

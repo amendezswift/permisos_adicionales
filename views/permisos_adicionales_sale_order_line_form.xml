@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="permisos_adicionales_sale_order_line_form" model="ir.ui.view">
+    <field name="name">permisos.adicionales.sale.order.line.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="arch" type="xml">
+      <xpath
+        expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_unit']"
+        position="before">
+        <field name="establece_precio_unitario" invisible="1" optional="hide" />
+      </xpath>
+      <xpath
+        expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_unit']"
+        position="attributes">
+        <attribute name="readonly">not establece_precio_unitario or qty_invoiced &gt; 0</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']/form//group/group//field[@name='price_unit']"
+        position="before">
+        <field name="establece_precio_unitario" invisible="1" />
+      </xpath>
+      <xpath expr="//field[@name='order_line']/form//group/group//field[@name='price_unit']"
+        position="attributes">
+        <attribute name="readonly">not establece_precio_unitario or qty_invoiced &gt; 0</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+    <record model="res.groups" id="precio_unitario_account_move_line_sale_order_line">
+      <field name="category_id" ref="base.module_category_usability" />
+      <field name="name">Establece precio unitario en facturas y ordenes de venta</field>
+    </record>
+  </data>
+</odoo>

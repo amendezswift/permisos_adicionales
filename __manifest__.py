@@ -1,0 +1,20 @@
+{
+    "name": "Permisos adicionales - Swift Solutions",
+    "version": "17.0.0.0.1",
+    "depends": ["base", "account", "sale", "configuraciones_generales"],
+    "data": [
+        "groups/permisos_adicionales_res_groups_listas_precios.xml",
+        "groups/permisos_adicionales_res_groups_terminos_pago.xml",
+        "groups/permisos_adicionales_res_groups_precio_unitario.xml",
+        "groups/permisos_adicionales_res_groups_forzar_anulacion.xml",
+        "groups/permisos_adicionales_res_groups_cuenta_destino.xml",
+        "views/permisos_adicionales_account_move_form.xml",
+        "views/permisos_adicionales_res_partner_form.xml",
+        "views/permisos_adicionales_sale_order_form.xml",
+        "views/permisos_adicionales_sale_order_line_form.xml",
+        "views/permisos_adicionales_account_move_line_form.xml",
+        "views/permisos_adicionales_account_payment_form.xml",
+    ],
+    "application": False,
+    "installable": True,
+}
