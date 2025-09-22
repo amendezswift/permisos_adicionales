@@ -1,17 +1,18 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
-class AccountMove(models.Model):
-    _inherit = "account.move"
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
 
-    establece_terminos_pago = fields.Boolean(
-        string="Establece terminos de pago",
-        compute="_compute_establece_terminos_pago",
+    establece_precio_unitario = fields.Boolean(
+        string="Establece precio unitario",
+        compute="_compute_establece_precio_unitario",
     )
 
-    @api.depends("user_id")
-    def _compute_establece_terminos_pago(self):
-        for registro in self:
-            registro.establece_terminos_pago = self.env.user.has_group(
-                "permisos_adicionales.terminos_pago_account_move_sale_order"
-            )
+    @api.depends_context("uid")
+    def _compute_establece_precio_unitario(self):
+        has_permission = self.env.user.has_group(
+            "permisos_adicionales.precio_unitario_account_move_line_sale_order_line"
+        )
+        for record in self:
+            record.establece_precio_unitario = has_permission

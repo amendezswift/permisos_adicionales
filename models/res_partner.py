@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -14,16 +14,18 @@ class ResPartner(models.Model):
         compute="_compute_establece_listas_precios",
     )
 
-    @api.depends("user_id")
+    @api.depends_context("uid")
     def _compute_establece_terminos_pago(self):
-        for registro in self:
-            registro.establece_terminos_pago = self.env.user.has_group(
-                "permisos_adicionales.terminos_pago_res_partner"
-            )
+        has_permission = self.env.user.has_group(
+            "permisos_adicionales.terminos_pago_res_partner"
+        )
+        for record in self:
+            record.establece_terminos_pago = has_permission
 
-    @api.depends("user_id")
+    @api.depends_context("uid")
     def _compute_establece_listas_precios(self):
-        for registro in self:
-            registro.establece_listas_precios = self.env.user.has_group(
-                "permisos_adicionales.listas_precios_res_partner"
-            )
+        has_permission = self.env.user.has_group(
+            "permisos_adicionales.listas_precios_res_partner"
+        )
+        for record in self:
+            record.establece_listas_precios = has_permission

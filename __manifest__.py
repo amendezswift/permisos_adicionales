@@ -1,6 +1,8 @@
 {
     "name": "Permisos adicionales - Swift Solutions",
-    "version": "17.0.0.0.1",
+    "version": "19.0.1.0.0",
+    "category": "Extra Tools",
+    "summary": "Configura permisos adicionales para términos de pago, listas de precios y cuentas.",
     "depends": ["base", "account", "sale", "configuraciones_generales"],
     "data": [
         "groups/permisos_adicionales_res_groups_listas_precios.xml",
@@ -15,6 +17,7 @@
         "views/permisos_adicionales_account_move_line_form.xml",
         "views/permisos_adicionales_account_payment_form.xml",
     ],
+    "license": "LGPL-3",
     "application": False,
     "installable": True,
 }

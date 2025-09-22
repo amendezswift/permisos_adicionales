@@ -3,11 +3,11 @@
   <record id="permisos_adicionales_sale_order_form" model="ir.ui.view">
     <field name="name">permisos.adicionales.sale.order.form</field>
     <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <field name="validity_date" position="after">
-        <field name="establece_terminos_pago" invisible="1" />
-        <field name="establece_listas_precios" invisible="1" />
+        <field name="establece_terminos_pago" invisible="1"/>
+        <field name="establece_listas_precios" invisible="1"/>
       </field>
       <xpath expr="//field[@name='payment_term_id']" position="attributes">
         <attribute name="readonly">not establece_terminos_pago or state != 'draft'</attribute>

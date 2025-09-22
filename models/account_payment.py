@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class AccountPayment(models.Model):
@@ -11,16 +11,14 @@ class AccountPayment(models.Model):
 
     @api.depends_context("uid")
     def _compute_establecer_cuenta_destino(self):
-        usuario = self.env.user
-        tiene_permiso = usuario.has_group(
+        has_permission = self.env.user.has_group(
             "permisos_adicionales.permitir_cambio_cuenta_destino"
         )
+        for record in self:
+            record.establecer_cuenta_destino = has_permission
 
-        for registro in self:
-            registro.establecer_cuenta_destino = tiene_permiso
-
-    @api.model
-    def create(self, vals):
-        record = super().create(vals)
-        record._compute_establecer_cuenta_destino()
-        return record
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        records._compute_establecer_cuenta_destino()
+        return records
